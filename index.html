@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Playground</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <h1>🎮 JavaScript Playground</h1>
+
+    <!-- Event Handling -->
+    <button id="magicBtn">Click Me!</button>
+    <p id="hoverText">Hover over me!</p>
+    <input type="text" id="keyInput" placeholder="Type something..." />
+
+    <!-- Double click secret -->
+    <div id="secretBox">Double-click me for a surprise!</div>
+
+    <!-- Interactive Elements -->
+    <div class="tabs">
+        <button class="tab-btn" data-tab="1">Tab 1</button>
+        <button class="tab-btn" data-tab="2">Tab 2</button>
+        <div class="tab-content" id="tab-1">This is content for Tab 1.</div>
+        <div class="tab-content" id="tab-2" style="display:none">This is content for Tab 2.</div>
+    </div>
+
+    <!-- Form Validation -->
+    <form id="myForm">
+        <input type="text" id="name" placeholder="Name" required />
+        <input type="email" id="email" placeholder="Email" required />
+        <input type="password" id="password" placeholder="Password" required />
+        <span id="passFeedback"></span>
+        <button type="submit">Submit</button>
+    </form>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
