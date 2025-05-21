@@ -1,51 +1,38 @@
-// 1. Event Handling 🎈
-document.getElementById("magicBtn").addEventListener("click", function () {
-    this.classList.toggle("clicked");
-    this.textContent = this.classList.contains("clicked") ? "Clicked!" : "Click Me!";
+// Responsive menu toggle
+const menuToggle = document.getElementById('menu-toggle');
+const menu = document.getElementById('menu');
+
+menuToggle.addEventListener('click', () => {
+    menu.classList.toggle('hidden');
 });
 
-document.getElementById("keyInput").addEventListener("keydown", function (e) {
-    console.log("Key pressed:", e.key);
-});
+// Simple form validation & submission feedback
+const form = document.getElementById('contact-form');
+const formMsg = document.getElementById('form-msg');
 
-document.getElementById("secretBox").addEventListener("dblclick", function () {
-    alert("🎉 You found the secret!");
-});
-
-// 2. Interactive Tabs 🎮
-const tabButtons = document.querySelectorAll(".tab-btn");
-const tabContents = document.querySelectorAll(".tab-content");
-
-tabButtons.forEach((btn) => {
-    btn.addEventListener("click", () => {
-        tabContents.forEach((tab) => (tab.style.display = "none"));
-        document.getElementById(`tab-${btn.dataset.tab}`).style.display = "block";
-    });
-});
-
-// 3. Form Validation 📋✅
-const form = document.getElementById("myForm");
-const passwordInput = document.getElementById("password");
-const feedback = document.getElementById("passFeedback");
-
-passwordInput.addEventListener("input", () => {
-    if (passwordInput.value.length < 8) {
-        feedback.textContent = "Password must be at least 8 characters.";
-    } else {
-        feedback.textContent = "✅ Password looks good!";
-        feedback.style.color = "green";
-    }
-});
-
-form.addEventListener("submit", (e) => {
+form.addEventListener('submit', (e) => {
     e.preventDefault();
-    const email = document.getElementById("email").value;
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    if (!emailRegex.test(email)) {
-        alert("❌ Invalid email format.");
+    const email = form.email.value.trim();
+    const message = form.message.value.trim();
+
+    if (email === '' || message === '') {
+        formMsg.style.color = 'red';
+        formMsg.textContent = 'Please fill out all fields.';
         return;
     }
 
-    alert("🎉 Form submitted successfully!");
+    // Simple email format check
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        formMsg.style.color = 'red';
+        formMsg.textContent = 'Please enter a valid email address.';
+        return;
+    }
+
+    formMsg.style.color = 'green';
+    formMsg.textContent = 'Thank you for your message!';
+
+    // Reset form fields
+    form.reset();
 });
